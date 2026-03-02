@@ -18,11 +18,6 @@ class MerchantStockHelper extends Module
 {
     use DataCleanupHelperTrait;
 
-    /**
-     * @param array $seedData
-     *
-     * @return \Generated\Shared\Transfer\MerchantStockTransfer
-     */
     public function haveMerchantStock(array $seedData): MerchantStockTransfer
     {
         $merchantStockTransfer = (new MerchantStockBuilder($seedData))->build();
@@ -41,11 +36,6 @@ class MerchantStockHelper extends Module
         return $merchantStockTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\MerchantStock\Persistence\SpyMerchantStock $merchantStockEntity
-     *
-     * @return void
-     */
     protected function cleanupMerchantStock(SpyMerchantStock $merchantStockEntity): void
     {
         $this->debug(sprintf('Deleting Merchant Stock: %d', $merchantStockEntity->getIdMerchantStock()));

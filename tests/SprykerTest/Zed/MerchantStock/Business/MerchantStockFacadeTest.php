@@ -33,9 +33,6 @@ class MerchantStockFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testCreateDefaultMerchantStockSuccessful(): void
     {
         // Arrange
@@ -51,9 +48,6 @@ class MerchantStockFacadeTest extends Unit
         $this->assertInstanceOf(StockTransfer::class, $merchantTransfer->getStocks()->getIterator()->current());
     }
 
-    /**
-     * @return void
-     */
     public function testGetReturnsRelatedStocks(): void
     {
         // Arrange
@@ -75,9 +69,6 @@ class MerchantStockFacadeTest extends Unit
         $this->assertSame($stockTransfer->getIdStock(), $stockCollectionTransfer->getStocks()->getIterator()->current()->getIdStock());
     }
 
-    /**
-     * @return void
-     */
     public function testGetReturnsEmptyStocks(): void
     {
         // Arrange
@@ -93,9 +84,6 @@ class MerchantStockFacadeTest extends Unit
         $this->assertEmpty($stockCollectionTransfer->getStocks());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandMerchantCollectionWithStocksReturnsMerchantCollectionWithRelatedStocksIfExist(): void
     {
         // Arrange
@@ -139,9 +127,6 @@ class MerchantStockFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testExpandMerchantCollectionWithStocksReturnsEmptyMerchantCollectionIfEmptyMerchantCollectionWasPassed(): void
     {
         // Arrange
@@ -155,9 +140,6 @@ class MerchantStockFacadeTest extends Unit
         $this->assertCount(0, $resultMerchantCollectionTransfer->getMerchants());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandMerchantCollectionWithStocksThrowsExceptionIfMerchantCollectionMerchantHasNoIdMerchant(): void
     {
         // Arrange

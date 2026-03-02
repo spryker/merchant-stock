@@ -12,11 +12,6 @@ use Generated\Shared\Transfer\StockCollectionTransfer;
 
 interface MerchantStockRepositoryInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStockCriteriaTransfer $merchantStockCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockCollectionTransfer
-     */
     public function get(MerchantStockCriteriaTransfer $merchantStockCriteriaTransfer): StockCollectionTransfer;
 
     /**

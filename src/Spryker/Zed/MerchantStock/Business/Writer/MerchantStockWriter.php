@@ -31,10 +31,6 @@ class MerchantStockWriter implements MerchantStockWriterInterface
      */
     protected $merchantStockEntityManager;
 
-    /**
-     * @param \Spryker\Zed\MerchantStock\Dependency\Facade\MerchantStockToStockFacadeInterface $stockFacade
-     * @param \Spryker\Zed\MerchantStock\Persistence\MerchantStockEntityManagerInterface $merchantStockEntityManager
-     */
     public function __construct(
         MerchantStockToStockFacadeInterface $stockFacade,
         MerchantStockEntityManagerInterface $merchantStockEntityManager
@@ -43,11 +39,6 @@ class MerchantStockWriter implements MerchantStockWriterInterface
         $this->merchantStockEntityManager = $merchantStockEntityManager;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantTransfer $merchantTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantResponseTransfer
-     */
     public function createDefaultMerchantStock(MerchantTransfer $merchantTransfer): MerchantResponseTransfer
     {
         $stockTransfer = (new StockTransfer())
@@ -70,11 +61,6 @@ class MerchantStockWriter implements MerchantStockWriterInterface
             ->setMerchant($merchantTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantTransfer $merchantTransfer
-     *
-     * @return string
-     */
     protected function generateStockNameByMerchant(MerchantTransfer $merchantTransfer): string
     {
         return sprintf(

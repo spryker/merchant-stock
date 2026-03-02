@@ -16,11 +16,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
  */
 class MerchantStockEntityManager extends AbstractEntityManager implements MerchantStockEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStockTransfer $merchantStockTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantStockTransfer
-     */
     public function createMerchantStock(MerchantStockTransfer $merchantStockTransfer): MerchantStockTransfer
     {
         $merchantStockTransfer->requireIdMerchant();

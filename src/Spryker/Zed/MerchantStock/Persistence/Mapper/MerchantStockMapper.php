@@ -22,20 +22,11 @@ class MerchantStockMapper
      */
     protected StockStoreRelationMapper $stockStoreRelationMapper;
 
-    /**
-     * @param \Spryker\Zed\MerchantStock\Persistence\Mapper\StockStoreRelationMapper $stockStoreRelationMapper
-     */
     public function __construct(StockStoreRelationMapper $stockStoreRelationMapper)
     {
         $this->stockStoreRelationMapper = $stockStoreRelationMapper;
     }
 
-    /**
-     * @param \Orm\Zed\Stock\Persistence\SpyStock $stockEntity
-     * @param \Generated\Shared\Transfer\StockTransfer $stockTransfer
-     *
-     * @return \Generated\Shared\Transfer\StockTransfer
-     */
     public function mapStockEntityToStockTransfer(
         SpyStock $stockEntity,
         StockTransfer $stockTransfer
@@ -52,12 +43,6 @@ class MerchantStockMapper
         return $stockTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\MerchantStock\Persistence\SpyMerchantStock $merchantStockEntity
-     * @param \Generated\Shared\Transfer\MerchantStockTransfer $merchantStockTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantStockTransfer
-     */
     public function mapMerchantStockEntityToMerchantStockTransfer(
         SpyMerchantStock $merchantStockEntity,
         MerchantStockTransfer $merchantStockTransfer
@@ -68,12 +53,6 @@ class MerchantStockMapper
             ->setIsDefault($merchantStockEntity->getIsDefault());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStockTransfer $merchantStockTransfer
-     * @param \Orm\Zed\MerchantStock\Persistence\SpyMerchantStock $merchantStockEntity
-     *
-     * @return \Orm\Zed\MerchantStock\Persistence\SpyMerchantStock
-     */
     public function mapMerchantStockTransferToMerchantStockEntity(
         MerchantStockTransfer $merchantStockTransfer,
         SpyMerchantStock $merchantStockEntity

@@ -17,20 +17,12 @@ class MerchantStockMerchantExpander implements MerchantStockMerchantExpanderInte
      */
     protected MerchantStockRepositoryInterface $merchantStockRepository;
 
-    /**
-     * @param \Spryker\Zed\MerchantStock\Persistence\MerchantStockRepositoryInterface $merchantStockRepository
-     */
     public function __construct(
         MerchantStockRepositoryInterface $merchantStockRepository
     ) {
         $this->merchantStockRepository = $merchantStockRepository;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\MerchantCollectionTransfer $merchantCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantCollectionTransfer
-     */
     public function expand(MerchantCollectionTransfer $merchantCollectionTransfer): MerchantCollectionTransfer
     {
         if ($merchantCollectionTransfer->getMerchants()->count() === 0) {

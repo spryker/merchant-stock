@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\MerchantCollectionTransfer;
 
 interface MerchantStockMerchantExpanderInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\MerchantCollectionTransfer $merchantCollectionTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantCollectionTransfer
-     */
     public function expand(MerchantCollectionTransfer $merchantCollectionTransfer): MerchantCollectionTransfer;
 }

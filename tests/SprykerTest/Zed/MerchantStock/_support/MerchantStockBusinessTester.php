@@ -31,11 +31,6 @@ class MerchantStockBusinessTester extends Actor
 {
     use _generated\MerchantStockBusinessTesterActions;
 
-    /**
-     * @param int $stocksCount
-     *
-     * @return \Generated\Shared\Transfer\MerchantTransfer
-     */
     public function haveMerchantWithStocks(int $stocksCount = 1): MerchantTransfer
     {
         $merchantTransfer = $this->haveMerchant();
@@ -53,12 +48,6 @@ class MerchantStockBusinessTester extends Actor
         return $merchantTransfer;
     }
 
-    /**
-     * @param int $expectedStockCount
-     * @param \Generated\Shared\Transfer\MerchantTransfer $actualMerchantTransfer
-     *
-     * @return void
-     */
     public function assertMerchantHasStocksCount(int $expectedStockCount, MerchantTransfer $actualMerchantTransfer): void
     {
         $stocks = $actualMerchantTransfer->getStocks()->getArrayCopy();

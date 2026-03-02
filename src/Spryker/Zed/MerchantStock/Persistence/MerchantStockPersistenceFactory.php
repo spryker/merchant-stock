@@ -19,25 +19,16 @@ use Spryker\Zed\MerchantStock\Persistence\Mapper\StockStoreRelationMapper;
  */
 class MerchantStockPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\MerchantStock\Persistence\SpyMerchantStockQuery
-     */
     public function createMerchantStockPropelQuery(): SpyMerchantStockQuery
     {
         return SpyMerchantStockQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantStock\Persistence\Mapper\MerchantStockMapper
-     */
     public function createMerchantStockMapper(): MerchantStockMapper
     {
         return new MerchantStockMapper($this->createStockStoreRelationMapper());
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantStock\Persistence\Mapper\StockStoreRelationMapper
-     */
     public function createStockStoreRelationMapper(): StockStoreRelationMapper
     {
         return new StockStoreRelationMapper();

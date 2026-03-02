@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\MerchantTransfer;
 
 interface MerchantStockWriterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\MerchantTransfer $merchantTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantResponseTransfer
-     */
     public function createDefaultMerchantStock(MerchantTransfer $merchantTransfer): MerchantResponseTransfer;
 }

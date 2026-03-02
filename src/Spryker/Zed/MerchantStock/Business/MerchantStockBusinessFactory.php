@@ -22,9 +22,6 @@ use Spryker\Zed\MerchantStock\MerchantStockDependencyProvider;
  */
 class MerchantStockBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\MerchantStock\Business\Writer\MerchantStockWriterInterface
-     */
     public function createMerchantStockWriter(): MerchantStockWriterInterface
     {
         return new MerchantStockWriter(
@@ -33,9 +30,6 @@ class MerchantStockBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantStock\Business\Expander\MerchantStockMerchantExpanderInterface
-     */
     public function createMerchantStockMerchantExpander(): MerchantStockMerchantExpanderInterface
     {
         return new MerchantStockMerchantExpander(
@@ -43,9 +37,6 @@ class MerchantStockBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\MerchantStock\Dependency\Facade\MerchantStockToStockFacadeInterface
-     */
     public function getStockFacade(): MerchantStockToStockFacadeInterface
     {
         return $this->getProvidedDependency(MerchantStockDependencyProvider::FACADE_STOCK);

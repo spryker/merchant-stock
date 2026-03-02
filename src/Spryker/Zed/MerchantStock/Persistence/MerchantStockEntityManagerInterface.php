@@ -11,10 +11,5 @@ use Generated\Shared\Transfer\MerchantStockTransfer;
 
 interface MerchantStockEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\MerchantStockTransfer $merchantStockTransfer
-     *
-     * @return \Generated\Shared\Transfer\MerchantStockTransfer
-     */
     public function createMerchantStock(MerchantStockTransfer $merchantStockTransfer): MerchantStockTransfer;
 }

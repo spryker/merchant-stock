@@ -11,6 +11,7 @@ use Generated\Shared\Transfer\MerchantStockCriteriaTransfer;
 use Generated\Shared\Transfer\StockCollectionTransfer;
 use Generated\Shared\Transfer\StockTransfer;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
+use Spryker\Zed\PropelOrm\Business\Runtime\ActiveQuery\Criteria;
 
 /**
  * @method \Spryker\Zed\MerchantStock\Persistence\MerchantStockPersistenceFactory getFactory()
@@ -26,10 +27,17 @@ class MerchantStockRepository extends AbstractRepository implements MerchantStoc
      */
     public function get(MerchantStockCriteriaTransfer $merchantStockCriteriaTransfer): StockCollectionTransfer
     {
+        /** @var \Orm\Zed\MerchantStock\Persistence\SpyMerchantStockQuery $merchantStockQuery */
         $merchantStockQuery = $this->getFactory()
             ->createMerchantStockPropelQuery()
+            ->filterByFkMerchant($merchantStockCriteriaTransfer->getIdMerchantOrFail())
             ->leftJoinWithSpyStock()
-            ->filterByFkMerchant($merchantStockCriteriaTransfer->getIdMerchantOrFail());
+            ->useSpyStockQuery(null, Criteria::LEFT_JOIN)
+                ->leftJoinWithStockStore()
+                ->useStockStoreQuery(null, Criteria::LEFT_JOIN)
+                    ->leftJoinWithStore()
+                ->endUse()
+            ->endUse();
 
         if ($merchantStockCriteriaTransfer->getIsDefault()) {
             $merchantStockQuery->filterByIsDefault(true);
@@ -64,8 +72,14 @@ class MerchantStockRepository extends AbstractRepository implements MerchantStoc
 
         $merchantStocksEntities = $this->getFactory()
             ->createMerchantStockPropelQuery()
-            ->leftJoinWithSpyStock()
             ->filterByFkMerchant_In($merchantIds)
+            ->leftJoinWithSpyStock()
+            ->useSpyStockQuery(null, Criteria::LEFT_JOIN)
+                ->leftJoinWithStockStore()
+                ->useStockStoreQuery(null, Criteria::LEFT_JOIN)
+                    ->leftJoinWithStore()
+                ->endUse()
+            ->endUse()
             ->find();
 
         return $this->getFactory()->createMerchantStockMapper()
